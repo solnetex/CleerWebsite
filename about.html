@@ -287,11 +287,10 @@
         box-shadow: var(--shadow-card);
     }
 
-    .stat-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent-color);
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
+  .stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+  }
 
     .stat-number {
         font-size: 2.5rem;
@@ -711,17 +710,7 @@
       });
     }, observerOptions);
 
-    // Observe all cards with enhanced mobile performance
-    document.querySelectorAll('.stat-card, .content-visual').forEach((el, index) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      
-      // Stagger animations
-      el.style.transitionDelay = `${index * 0.1}s`;
-      
-      observer.observe(el);
-    });
+  // No JS-based animation for .stat-card or .content-visual; handled by CSS only
     
     // Touch-friendly interactions
     if ('ontouchstart' in window) {

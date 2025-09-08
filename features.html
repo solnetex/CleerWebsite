@@ -228,17 +228,20 @@
         grid-auto-rows: minmax(200px, auto);
     }
 
-    .bento-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 24px;
-        padding: var(--spacing-xl);
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-        box-shadow: var(--shadow-card);
-    }
+  .bento-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: var(--spacing-xl);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-card);
+    transition:
+      box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 
     .bento-card::before {
         content: '';
@@ -249,7 +252,6 @@
         bottom: 0;
         background: var(--gradient-accent);
         opacity: 0;
-        transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         z-index: 1;
     }
 
@@ -257,11 +259,10 @@
         opacity: 0.03;
     }
 
-    .bento-card:hover {
-        transform: translateY(-4px) scale(1.02);
-        border-color: var(--accent-light);
-        box-shadow: var(--shadow-hover);
-    }
+  .bento-card:hover {
+    border-color: var(--accent-light);
+    box-shadow: var(--shadow-hover);
+  }
 
     .bento-card-content {
         position: relative;
@@ -529,9 +530,13 @@
             font-size: clamp(1.8rem, 10vw, 2.5rem);
         }
         
-        .bento-card {
-            padding: var(--spacing-md);
-        }
+    .bento-card {
+      padding: var(--spacing-md);
+      transition: 
+        transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
         
         .bento-card h3 {
             font-size: 1.1rem;
@@ -549,9 +554,15 @@
             min-width: 44px;
         }
         
-        .bento-card:hover {
-            transform: none;
-        }
+    .bento-card {
+      transition: 
+        transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .bento-card:hover {
+      transform: none;
+    }
         
         .bento-card:active {
             transform: scale(0.98);
