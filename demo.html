@@ -126,6 +126,7 @@
 
     .logo:hover {
         transform: translateY(-2px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .nav-menu {
@@ -148,6 +149,7 @@
     .nav-link:hover {
         color: var(--accent-color);
         transform: translateY(-1px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .nav-link::after {
@@ -322,6 +324,7 @@
     .demo-button:hover {
         transform: translateY(-2px);
         box-shadow: var(--shadow-hover);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .demo-features {
@@ -344,6 +347,7 @@
     .feature-card:hover {
         transform: translateY(-5px);
         border-color: var(--accent-color);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .feature-icon {
@@ -391,6 +395,77 @@
         animation: pulse 1.5s ease-in-out infinite;
     }
 
+    /* Mouse cursor styles */
+    .demo-mouse {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: #333;
+        border-radius: 50%;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #333;
+    }
+
+    .demo-mouse.clicking {
+        transform: scale(0.7);
+    }
+
+    .demo-mouse.visible {
+        opacity: 1;
+    }
+
+    /* Demo container positioning for mouse */
+    .demo-interface {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Cursor trail effect */
+    .cursor-trail {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(51, 51, 51, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 999;
+        animation: fadeOut 0.5s ease-out forwards;
+    }
+
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+    }
+
+    /* Typing animation */
+    .typing-text {
+        border-right: 2px solid var(--accent-color);
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%, 50% { border-color: var(--accent-color); }
+        51%, 100% { border-color: transparent; }
+    }
+
+    /* Demo automation controls */
+    .demo-auto {
+        position: relative;
+    }
+
+    .demo-auto .demo-input {
+        position: relative;
+    }
+
+    .demo-auto .demo-button {
+        position: relative;
+    }
+
     /* Footer */
     .footer {
         background: var(--secondary-bg);
@@ -426,6 +501,7 @@
     .social-link:hover {
         color: var(--accent-color);
         transform: translateY(-3px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     /* Enhanced Mobile Responsive Design */
@@ -658,8 +734,8 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="cleer.html" class="logo">
-        <i class="fas fa-eye" style="color: var(--accent-color); font-size: 1.5rem;"></i>
-        Cleer
+        <img src="CleerLogoTrans.png" alt="Cleer Logo" style="height: 6.2rem; width: auto;">
+        
       </a>
       <ul class="nav-menu">
         <li><a href="cleer.html" class="nav-link">Home</a></li>
@@ -693,17 +769,18 @@
           </div>
         </div>
         
-        <div class="demo-interface">
+        <div class="demo-interface demo-auto">
+          <div class="demo-mouse" id="demo-mouse"></div>
           <div class="demo-screen">
-            <h3 style="color: var(--accent-color); margin-bottom: var(--spacing-md);">Interactive Demo</h3>
-            <p style="color: var(--secondary-text); margin-bottom: var(--spacing-lg);">Try asking Cleer to help with a task. Cleer can see your screen and understand context automatically.</p>
+            <h3 style="color: var(--accent-color); margin-bottom: var(--spacing-md);">Automated Demo</h3>
+            <p style="color: var(--secondary-text); margin-bottom: var(--spacing-lg);">Watch Cleer in action as it demonstrates its capabilities.</p>
             
             <div class="demo-message" id="demo-message">
               "I can see you're working on a presentation. Would you like me to help format the slides?"
             </div>
             
-            <input type="text" class="demo-input" placeholder="Ask Cleer anything..." id="demo-input">
-            <button class="demo-button" onclick="simulateResponse()">Send Message</button>
+            <input type="text" class="demo-input" placeholder="Ask Cleer anything..." id="demo-input" readonly>
+            <button class="demo-button" id="demo-button">Send Message</button>
           </div>
         </div>
       </div>
@@ -750,10 +827,7 @@
       <p>&copy; 2025 Cleer by Solnetex. All rights reserved.</p>
       <p>Building the future of AI assistance, one innovation at a time.</p>
       <div class="social-links">
-        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-        <a href="mailto:info@cleer.ai" class="social-link"><i class="fas fa-envelope"></i></a>
+       
       </div>
     </div>
   </footer>
@@ -845,31 +919,214 @@
       "I notice you're researching a topic. I can help you find more relevant information."
     ];
 
-    function simulateResponse() {
-      const input = document.getElementById('demo-input');
-      const message = document.getElementById('demo-message');
+    // Automated Demo functionality
+    class AutomatedDemo {
+      constructor() {
+        this.mouse = document.getElementById('demo-mouse');
+        this.input = document.getElementById('demo-input');
+        this.button = document.getElementById('demo-button');
+        this.message = document.getElementById('demo-message');
+        this.demoContainer = document.querySelector('.demo-interface');
+        
+        this.isRunning = false;
+        this.init();
+      }
       
-      if (input.value.trim()) {
-        // Show typing indicator
-        message.innerHTML = '<span class="typing-indicator">Cleer is thinking...</span>';
-        
-        // Simulate processing time
+      init() {
+        // Start the demo automatically after a short delay
         setTimeout(() => {
-          const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-          message.innerHTML = `"${randomResponse}"`;
-          message.style.animation = 'fadeInUp 0.5s ease-out';
-        }, 1500);
+          this.startDemo();
+        }, 2000);
+      }
+      
+      startDemo() {
+        if (this.isRunning) return;
+        this.isRunning = true;
+        this.runDemoSequence();
+      }
+      
+      async runDemoSequence() {
+        // Wait a moment before starting
+        await this.delay(1000);
         
-        input.value = '';
+        // Move mouse to input field
+        await this.moveMouseToInput();
+        
+        // Click on input field
+        await this.clickInput();
+        
+        // Type message
+        await this.typeMessage();
+        
+        // Click send button
+        await this.clickSendButton();
+        
+        // Show thinking indicator
+        await this.showThinking();
+        
+        // Show response
+        await this.showResponse();
+        
+        // Reset for next cycle
+        await this.resetDemo();
+        
+        // Loop the demo
+        setTimeout(() => {
+          this.isRunning = false;
+          this.startDemo();
+        }, 3000);
+      }
+      
+      async moveMouseToInput() {
+        const inputRect = this.input.getBoundingClientRect();
+        const containerRect = this.demoContainer.getBoundingClientRect();
+        
+        // Start mouse from outside the box (top-left)
+        const startX = -50;
+        const startY = -50;
+        const endX = inputRect.left - containerRect.left + inputRect.width / 2;
+        const endY = inputRect.top - containerRect.top + inputRect.height / 2;
+        
+        this.mouse.style.left = startX + 'px';
+        this.mouse.style.top = startY + 'px';
+        this.mouse.classList.add('visible');
+        
+        // Animate mouse movement
+        await this.animateMouseMove(startX, startY, endX, endY, 1500);
+      }
+      
+      async animateMouseMove(startX, startY, endX, endY, duration) {
+        return new Promise(resolve => {
+          const startTime = performance.now();
+          
+          const animate = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing function for smooth movement
+            const easeInOutCubic = progress < 0.5 
+              ? 4 * progress * progress * progress 
+              : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+            
+            const currentX = startX + (endX - startX) * easeInOutCubic;
+            const currentY = startY + (endY - startY) * easeInOutCubic;
+            
+            this.mouse.style.left = currentX + 'px';
+            this.mouse.style.top = currentY + 'px';
+            
+            // Create cursor trail
+            this.createCursorTrail(currentX, currentY);
+            
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              resolve();
+            }
+          };
+          
+          requestAnimationFrame(animate);
+        });
+      }
+      
+      createCursorTrail(x, y) {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = x + 'px';
+        trail.style.top = y + 'px';
+        this.demoContainer.appendChild(trail);
+        
+        // Remove trail after animation
+        setTimeout(() => {
+          if (trail.parentNode) {
+            trail.parentNode.removeChild(trail);
+          }
+        }, 500);
+      }
+      
+      async clickInput() {
+        this.mouse.classList.add('clicking');
+        await this.delay(200);
+        this.mouse.classList.remove('clicking');
+        this.input.focus();
+        await this.delay(300);
+      }
+      
+      async typeMessage() {
+        // Single Q&A pair that repeats
+        const message = "Yes how do i format this?";
+        this.currentAnswer = "I'll help you format your presentation! Scanning your slides… I see the title text is a bit small and the bullet points are crowded. Increasing font size and spacing will help readability. Your color scheme is a bit muted—adding a contrasting accent color can make key points pop. Slide 3’s chart could use a lighter background so the data stands out. I’d also add subtle transitions like ‘Fade’ to keep the flow smooth. These tweaks will make your presentation look polished and professional.";
+        
+        this.input.value = '';
+        
+        for (let i = 0; i <= message.length; i++) {
+          this.input.value = message.substring(0, i);
+          this.input.classList.add('typing-text');
+          
+          // Random typing speed variation
+          const delay = Math.random() * 100 + 50;
+          await this.delay(delay);
+        }
+        
+        this.input.classList.remove('typing-text');
+        await this.delay(500);
+      }
+      
+      async clickSendButton() {
+        const buttonRect = this.button.getBoundingClientRect();
+        const containerRect = this.demoContainer.getBoundingClientRect();
+        
+        const endX = buttonRect.left - containerRect.left + buttonRect.width / 2;
+        const endY = buttonRect.top - containerRect.top + buttonRect.height / 2;
+        
+        const currentX = parseFloat(this.mouse.style.left);
+        const currentY = parseFloat(this.mouse.style.top);
+        
+        await this.animateMouseMove(currentX, currentY, endX, endY, 800);
+        
+        this.mouse.classList.add('clicking');
+        await this.delay(200);
+        this.mouse.classList.remove('clicking');
+        
+        // Trigger button click
+        this.button.click();
+        await this.delay(300);
+      }
+      
+      async showThinking() {
+        this.message.innerHTML = '<span class="typing-indicator">Cleer is thinking...</span>';
+        await this.delay(2000);
+      }
+      
+      async showResponse() {
+        // Use the predetermined answer that matches the question
+        const response = this.currentAnswer;
+        
+        this.message.innerHTML = `"${response}"`;
+        this.message.style.animation = 'fadeInUp 0.5s ease-out';
+        await this.delay(3000);
+      }
+      
+      async resetDemo() {
+        this.input.value = '';
+        this.message.innerHTML = '"I can see you\'re working on a presentation. Would you like me to help format the slides?"';
+        this.message.style.animation = '';
+        
+        // Move mouse back outside
+        this.mouse.style.left = '-50px';
+        this.mouse.style.top = '-50px';
+        this.mouse.classList.remove('visible');
+        
+        await this.delay(1000);
+      }
+      
+      delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
       }
     }
 
-    // Allow Enter key to send message
-    document.getElementById('demo-input').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        simulateResponse();
-      }
-    });
+    // Initialize the automated demo
+    const automatedDemo = new AutomatedDemo();
+
 
     // Intersection Observer for animations
     const observerOptions = {

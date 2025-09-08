@@ -137,6 +137,7 @@
 
     .logo:hover {
         transform: translateY(-2px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .nav-menu {
@@ -159,6 +160,7 @@
     .nav-link:hover {
         color: var(--accent-color);
         transform: translateY(-1px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .nav-link::after {
@@ -280,6 +282,7 @@
         transform: translateY(-2px);
         box-shadow: var(--shadow-hover);
         background: var(--accent-hover);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .btn-secondary {
@@ -294,6 +297,7 @@
         color: white;
         transform: translateY(-2px);
         box-shadow: var(--shadow-hover);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     /* Floating Elements */
@@ -399,6 +403,7 @@
         transform: translateY(-6px) scale(1.01);
         border-color: var(--accent-light);
         box-shadow: var(--shadow-hover);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .card-content {
@@ -459,6 +464,7 @@
     .social-link:hover {
         color: var(--accent-color);
         transform: translateY(-3px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     /* Enhanced Mobile Responsive Design */
@@ -702,8 +708,8 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="cleer.html" class="logo">
-        <i class="fas fa-eye" style="color: var(--accent-color); font-size: 1.5rem;"></i>
-        Cleer
+        <img src="CleerLogoTrans.png" alt="Cleer Logo" style="height: 3.1rem; width: auto;">
+        
       </a>
       <ul class="nav-menu">
         <li><a href="cleer.html" class="nav-link active">Home</a></li>
@@ -787,10 +793,7 @@
       <p>&copy; 2025 Cleer by Solnetex. All rights reserved.</p>
       <p>Building the future of AI assistance, one innovation at a time.</p>
       <div class="social-links">
-        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-        <a href="mailto:info@cleer.ai" class="social-link"><i class="fas fa-envelope"></i></a>
+
       </div>
     </div>
   </footer>
