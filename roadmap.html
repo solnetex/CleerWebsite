@@ -281,22 +281,7 @@
         color: rgba(255, 255, 255, 0.9);
     }
 
-    .timeline-dot {
-        position: absolute;
-        left: 50%;
-        top: var(--spacing-lg);
-        width: 20px;
-        height: 20px;
-        background: var(--gradient-primary);
-        border-radius: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
-    }
-
-    .timeline-dot.current {
-        background: var(--gradient-primary);
-        box-shadow: 0 0 0 4px var(--accent-muted);
-    }
+  
 
     .timeline-content h3 {
         font-size: 1.3rem;
@@ -408,9 +393,7 @@
             padding-right: 0 !important;
         }
 
-        .timeline-dot {
-            left: 20px;
-        }
+       
     }
 </style>
 </head>
@@ -445,7 +428,7 @@
       
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
+         
           <div class="timeline-content">
             <h3>Q1 2025 - Core Development</h3>
             <span class="status completed">Completed</span>
@@ -454,7 +437,7 @@
         </div>
         
         <div class="timeline-item">
-          <div class="timeline-dot current"></div>
+       
           <div class="timeline-content current">
             <h3>Q2 2025 - Advanced Development</h3>
             <span class="status current">Current Stage</span>
@@ -463,7 +446,7 @@
         </div>
         
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
+         
           <div class="timeline-content">
             <h3>Q3 2025 - Beta Release</h3>
             <span class="status upcoming">Upcoming</span>
@@ -472,7 +455,7 @@
         </div>
         
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
+          
           <div class="timeline-content">
             <h3>Q4 2025 - Public Launch</h3>
             <span class="status upcoming">Upcoming</span>
@@ -481,7 +464,7 @@
         </div>
         
         <div class="timeline-item">
-          <div class="timeline-dot"></div>
+          
           <div class="timeline-content">
             <h3>Q1 2026 - Pro Features</h3>
             <span class="status upcoming">Future</span>
