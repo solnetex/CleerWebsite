@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join Team | Cleer — The Second You</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    /* CSS Variables - Premium Color Palette */
+    :root {
+        --primary-bg: #fafafa;
+        --secondary-bg: #f5f5f5;
+        --accent-bg: #ffffff;
+        --card-bg: #ffffff;
+        --primary-text: #1a1a1a;
+        --secondary-text: #6b7280;
+        --accent-text: #4b5563;
+        --accent-color: #2563eb;
+        --accent-hover: #1d4ed8;
+        --accent-light: #93c5fd;
+        --accent-muted: #eff6ff;
+        --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        --gradient-secondary: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        --gradient-accent: linear-gradient(135deg, #93c5fd 0%, #dbeafe 100%);
+        --border-color: #e2e8f0;
+        --border-light: #f1f5f9;
+        --shadow: 0 10px 25px rgba(37, 99, 235, 0.08);
+        --shadow-hover: 0 20px 40px rgba(37, 99, 235, 0.12);
+        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 6rem;
+    }
+
+    /* Reset & Base */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--primary-bg);
+        color: var(--primary-text);
+        line-height: 1.7;
+        overflow-x: hidden;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    /* Sophisticated Background */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(147, 197, 253, 0.02) 0%, transparent 50%),
+            radial-gradient(circle at 40% 60%, rgba(219, 234, 254, 0.01) 0%, transparent 50%),
+            linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        z-index: -2;
+    }
+
+    /* Subtle Grid Texture */
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+    /* Navigation */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(250, 250, 250, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-card);
+    }
+
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-text);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+        transform: translateY(-2px);
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: var(--spacing-lg);
+    }
+
+    .nav-link {
+        color: var(--accent-text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: var(--spacing-xs) 0;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+    }
+
+    .nav-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-1px);
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .nav-link.active {
+        color: var(--accent-color);
+    }
+
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--primary-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Page Container */
+    .page-container {
+        min-height: 100vh;
+        padding-top: 80px;
+    }
+
+    /* Section Styles */
+    .section {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: var(--spacing-xl);
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-subtitle {
+        font-size: 1.2rem;
+        color: var(--secondary-text);
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Card Grid */
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-2xl);
+    }
+
+    .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: var(--spacing-xl);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: var(--shadow-card);
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--gradient-accent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+    }
+
+    .card:hover::before {
+        opacity: 0.03;
+    }
+
+    .card:hover {
+        transform: translateY(-6px) scale(1.01);
+        border-color: var(--accent-light);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .card-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .card h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+        color: var(--accent-color);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        letter-spacing: -0.01em;
+    }
+
+    .card .role-type {
+        font-size: 0.9rem;
+        color: var(--secondary-text);
+        margin-bottom: var(--spacing-sm);
+        font-weight: 500;
+    }
+
+    .card p {
+        color: var(--secondary-text);
+        line-height: 1.7;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .card .requirements {
+        background: var(--accent-muted);
+        border-radius: 12px;
+        padding: var(--spacing-sm);
+        font-size: 0.9rem;
+        color: var(--accent-text);
+    }
+
+    .card.featured {
+        background: linear-gradient(135deg, var(--card-bg) 0%, var(--accent-bg) 100%);
+        border: 2px solid var(--accent-color);
+        box-shadow: var(--shadow);
+    }
+
+    .card.featured h3 {
+        color: var(--accent-color);
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-size: 0.9rem;
+        position: relative;
+        overflow: hidden;
+        margin-top: var(--spacing-sm);
+    }
+
+    .btn-primary {
+        background: var(--gradient-primary);
+        color: white;
+        box-shadow: var(--shadow-card);
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+        background: var(--accent-hover);
+    }
+
+    /* Footer */
+    .footer {
+        background: var(--secondary-bg);
+        border-top: 1px solid var(--border-color);
+        padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+        text-align: center;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .footer p {
+        color: var(--secondary-text);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+    }
+
+    .social-link {
+        color: var(--secondary-text);
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--secondary-bg);
+            flex-direction: column;
+            padding: var(--spacing-lg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu-toggle {
+            display: block;
+        }
+
+        .section {
+            padding: var(--spacing-2xl) var(--spacing-sm);
+        }
+
+        .card-grid {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+    }
+</style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="cleer.html" class="logo">
+        <i class="fas fa-eye" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+        Cleer
+      </a>
+      <ul class="nav-menu">
+        <li><a href="cleer.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+        <li><a href="team.html" class="nav-link active">Join Team</a></li>
+        <li><a href="demo.html" class="nav-link">Demo</a></li>
+      </ul>
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Container -->
+  <div class="page-container">
+    <!-- Team Section -->
+    <section class="section">
+      <h2 class="section-title">Join the Cleer Team</h2>
+      <p class="section-subtitle">Help us build the future of AI assistance</p>
+      
+      <div class="card-grid">
+        <div class="card featured">
+          <div class="card-content">
+            <h3><i class="fas fa-users"></i> Executive Leadership</h3>
+            <div class="role-type">Executive • Full-time • Remote</div>
+            <p>Join our executive team and help lead the next generation of AI innovation. We're seeking visionary leaders who can drive strategic growth and build world-class teams.</p>
+            <div class="requirements">
+              <strong>Key Positions:</strong> COO, CFO, CTO<br>
+              <strong>Experience:</strong> 10+ years in tech leadership<br>
+              <strong>Skills:</strong> Strategic planning, team building, AI/ML knowledge
+            </div>
+            <a href="mailto:executives@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-code"></i> Lead Software Engineer</h3>
+            <div class="role-type">Engineering • Full-time • Remote</div>
+            <p>Lead our core development team and architect the next generation of AI systems. Experience with machine learning, distributed systems, and modern web technologies required.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> 7+ years software engineering<br>
+              <strong>Skills:</strong> Python, ML frameworks, cloud architecture<br>
+              <strong>Bonus:</strong> AI/ML experience, team leadership
+            </div>
+            <a href="mailto:engineering@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-brain"></i> Senior AI Researcher</h3>
+            <div class="role-type">Research • Full-time • Remote</div>
+            <p>Push the boundaries of AI research and develop breakthrough algorithms. PhD in AI/ML preferred with strong publication record and hands-on experience.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> PhD in AI/ML or related field<br>
+              <strong>Skills:</strong> Deep learning, computer vision, NLP<br>
+              <strong>Bonus:</strong> Published research, patent experience
+            </div>
+            <a href="mailto:research@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-palette"></i> Senior UX Designer</h3>
+            <div class="role-type">Design • Full-time • Remote</div>
+            <p>Design intuitive AI interfaces that users love. 5+ years experience in UX/UI design with portfolio showcasing complex product designs.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> 5+ years UX/UI design<br>
+              <strong>Skills:</strong> Figma, user research, prototyping<br>
+              <strong>Bonus:</strong> AI product design experience
+            </div>
+            <a href="mailto:design@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-shield-alt"></i> Security Engineer</h3>
+            <div class="role-type">Security • Full-time • Remote</div>
+            <p>Ensure our AI systems are secure and privacy-compliant. Experience with AI security, cryptography, and compliance frameworks essential.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> 5+ years security engineering<br>
+              <strong>Skills:</strong> Cryptography, compliance, AI security<br>
+              <strong>Bonus:</strong> Privacy regulations expertise
+            </div>
+            <a href="mailto:security@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-chart-line"></i> Data Scientist</h3>
+            <div class="role-type">Analytics • Full-time • Remote</div>
+            <p>Analyze user behavior and optimize AI performance. Strong background in statistics, machine learning, and data visualization required.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> 4+ years data science<br>
+              <strong>Skills:</strong> Python, SQL, ML, statistics<br>
+              <strong>Bonus:</strong> AI model optimization
+            </div>
+            <a href="mailto:data@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-mobile-alt"></i> Mobile Developer</h3>
+            <div class="role-type">Mobile • Full-time • Remote</div>
+            <p>Build native mobile experiences for our AI platform. Experience with React Native, Swift, or Kotlin and AI integration preferred.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> 3+ years mobile development<br>
+              <strong>Skills:</strong> React Native, Swift, Kotlin<br>
+              <strong>Bonus:</strong> AI integration experience
+            </div>
+            <a href="mailto:mobile@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-bug"></i> QA Engineer</h3>
+            <div class="role-type">Testing • Full-time • Remote</div>
+            <p>Ensure our AI systems work flawlessly. Experience with automated testing and AI model validation essential.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> 3+ years QA experience<br>
+              <strong>Skills:</strong> Automated testing, AI validation<br>
+              <strong>Bonus:</strong> ML testing frameworks
+            </div>
+            <a href="mailto:qa@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-comments"></i> Community Manager</h3>
+            <div class="role-type">Community • Full-time • Remote</div>
+            <p>Build and engage our user community. Strong communication skills and experience with AI/tech communities preferred.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> 2+ years community management<br>
+              <strong>Skills:</strong> Social media, content creation<br>
+              <strong>Bonus:</strong> AI/tech community experience
+            </div>
+            <a href="mailto:community@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-graduation-cap"></i> AI Ethics Specialist</h3>
+            <div class="role-type">Ethics • Full-time • Remote</div>
+            <p>Ensure our AI development follows ethical guidelines. Background in AI ethics, philosophy, or related field required.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> Background in AI ethics<br>
+              <strong>Skills:</strong> Ethics frameworks, policy<br>
+              <strong>Bonus:</strong> Philosophy degree
+            </div>
+            <a href="mailto:ethics@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-content">
+            <h3><i class="fas fa-rocket"></i> DevOps Engineer</h3>
+            <div class="role-type">Infrastructure • Full-time • Remote</div>
+            <p>Scale our AI infrastructure globally. Experience with cloud platforms, containerization, and AI model deployment essential.</p>
+            <div class="requirements">
+              <strong>Requirements:</strong> 4+ years DevOps experience<br>
+              <strong>Skills:</strong> AWS/Azure, Kubernetes, Docker<br>
+              <strong>Bonus:</strong> AI model deployment
+            </div>
+            <a href="mailto:devops@cleer.ai" class="btn btn-primary">Apply Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Cleer by Solnetex. All rights reserved.</p>
+      <p>Building the future of AI assistance, one innovation at a time.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="mailto:info@cleer.ai" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-menu').classList.toggle('active');
+    });
+
+    // Add scroll effect to navbar
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(250, 250, 250, 0.98)';
+      } else {
+        navbar.style.background = 'rgba(250, 250, 250, 0.95)';
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.card').forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      
+      // Stagger animations
+      el.style.transitionDelay = `${index * 0.1}s`;
+      
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

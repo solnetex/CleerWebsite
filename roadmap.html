@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap | Cleer — The Second You</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    /* CSS Variables - Premium Color Palette */
+    :root {
+        --primary-bg: #fafafa;
+        --secondary-bg: #f5f5f5;
+        --accent-bg: #ffffff;
+        --card-bg: #ffffff;
+        --primary-text: #1a1a1a;
+        --secondary-text: #6b7280;
+        --accent-text: #4b5563;
+        --accent-color: #2563eb;
+        --accent-hover: #1d4ed8;
+        --accent-light: #93c5fd;
+        --accent-muted: #eff6ff;
+        --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        --gradient-secondary: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        --gradient-accent: linear-gradient(135deg, #93c5fd 0%, #dbeafe 100%);
+        --border-color: #e2e8f0;
+        --border-light: #f1f5f9;
+        --shadow: 0 10px 25px rgba(37, 99, 235, 0.08);
+        --shadow-hover: 0 20px 40px rgba(37, 99, 235, 0.12);
+        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 6rem;
+    }
+
+    /* Reset & Base */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--primary-bg);
+        color: var(--primary-text);
+        line-height: 1.7;
+        overflow-x: hidden;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    /* Sophisticated Background */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(147, 197, 253, 0.02) 0%, transparent 50%),
+            radial-gradient(circle at 40% 60%, rgba(219, 234, 254, 0.01) 0%, transparent 50%),
+            linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        z-index: -2;
+    }
+
+    /* Subtle Grid Texture */
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+    /* Navigation */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(250, 250, 250, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-card);
+    }
+
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-text);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+        transform: translateY(-2px);
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: var(--spacing-lg);
+    }
+
+    .nav-link {
+        color: var(--accent-text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: var(--spacing-xs) 0;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+    }
+
+    .nav-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-1px);
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .nav-link.active {
+        color: var(--accent-color);
+    }
+
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--primary-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Page Container */
+    .page-container {
+        min-height: 100vh;
+        padding-top: 80px;
+    }
+
+    /* Section Styles */
+    .section {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: var(--spacing-xl);
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-subtitle {
+        font-size: 1.2rem;
+        color: var(--secondary-text);
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Timeline */
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--gradient-primary);
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: var(--spacing-2xl);
+        width: 50%;
+    }
+
+    .timeline-item:nth-child(odd) {
+        left: 0;
+        padding-right: var(--spacing-xl);
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 50%;
+        padding-left: var(--spacing-xl);
+    }
+
+    .timeline-content {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: var(--spacing-lg);
+        position: relative;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-card);
+    }
+
+    .timeline-content:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color);
+    }
+
+    .timeline-content.current {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        box-shadow: var(--shadow);
+    }
+
+    .timeline-content.current h3 {
+        color: white;
+    }
+
+    .timeline-content.current p {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .timeline-dot {
+        position: absolute;
+        left: 50%;
+        top: var(--spacing-lg);
+        width: 20px;
+        height: 20px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+    }
+
+    .timeline-dot.current {
+        background: var(--gradient-primary);
+        box-shadow: 0 0 0 4px var(--accent-muted);
+    }
+
+    .timeline-content h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+        color: var(--accent-color);
+    }
+
+    .timeline-content .status {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        display: inline-block;
+    }
+
+    .status.current {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .status.completed {
+        background: var(--accent-muted);
+        color: var(--accent-color);
+    }
+
+    .status.upcoming {
+        background: var(--border-light);
+        color: var(--secondary-text);
+    }
+
+    .timeline-content p {
+        color: var(--secondary-text);
+        line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer {
+        background: var(--secondary-bg);
+        border-top: 1px solid var(--border-color);
+        padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+        text-align: center;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .footer p {
+        color: var(--secondary-text);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+    }
+
+    .social-link {
+        color: var(--secondary-text);
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--secondary-bg);
+            flex-direction: column;
+            padding: var(--spacing-lg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu-toggle {
+            display: block;
+        }
+
+        .section {
+            padding: var(--spacing-2xl) var(--spacing-sm);
+        }
+
+        .timeline::before {
+            left: 20px;
+        }
+
+        .timeline-item {
+            width: 100%;
+            left: 0 !important;
+            padding-left: 50px !important;
+            padding-right: 0 !important;
+        }
+
+        .timeline-dot {
+            left: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="cleer.html" class="logo">
+        <i class="fas fa-eye" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+        Cleer
+      </a>
+      <ul class="nav-menu">
+        <li><a href="cleer.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="roadmap.html" class="nav-link active">Roadmap</a></li>
+        <li><a href="team.html" class="nav-link">Join Team</a></li>
+        <li><a href="demo.html" class="nav-link">Demo</a></li>
+      </ul>
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Container -->
+  <div class="page-container">
+    <!-- Roadmap Section -->
+    <section class="section">
+      <h2 class="section-title">Development Roadmap</h2>
+      <p class="section-subtitle">Current Stage: Advanced Development</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Q1 2025 - Core Development</h3>
+            <span class="status completed">Completed</span>
+            <p>Initial development of core visual recognition and contextual understanding capabilities. Basic AI framework established with fundamental learning algorithms.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot current"></div>
+          <div class="timeline-content current">
+            <h3>Q2 2025 - Advanced Development</h3>
+            <span class="status current">Current Stage</span>
+            <p>Advanced AI development phase with core visual recognition and contextual understanding capabilities being refined. Our team is working on optimizing the AI's learning algorithms and ensuring seamless integration with existing workflows.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Q3 2025 - Beta Release</h3>
+            <span class="status upcoming">Upcoming</span>
+            <p>Limited beta release with core features for select users and feedback collection. This phase will focus on real-world testing and user experience optimization.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Q4 2025 - Public Launch</h3>
+            <span class="status upcoming">Upcoming</span>
+            <p>Full public release with advanced features and enterprise integrations. Cleer will be available to the general public with comprehensive AI assistance capabilities.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Q1 2026 - Pro Features</h3>
+            <span class="status upcoming">Future</span>
+            <p>Advanced AI capabilities and custom integrations for professional users. Enhanced learning algorithms and specialized industry solutions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Cleer by Solnetex. All rights reserved.</p>
+      <p>Building the future of AI assistance, one innovation at a time.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="mailto:info@cleer.ai" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-menu').classList.toggle('active');
+    });
+
+    // Add scroll effect to navbar
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(250, 250, 250, 0.98)';
+      } else {
+        navbar.style.background = 'rgba(250, 250, 250, 0.95)';
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all timeline items
+    document.querySelectorAll('.timeline-item').forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      
+      // Stagger animations
+      el.style.transitionDelay = `${index * 0.2}s`;
+      
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

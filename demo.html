@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo | Cleer — The Second You</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    /* CSS Variables - Premium Color Palette */
+    :root {
+        --primary-bg: #fafafa;
+        --secondary-bg: #f5f5f5;
+        --accent-bg: #ffffff;
+        --card-bg: #ffffff;
+        --primary-text: #1a1a1a;
+        --secondary-text: #6b7280;
+        --accent-text: #4b5563;
+        --accent-color: #2563eb;
+        --accent-hover: #1d4ed8;
+        --accent-light: #93c5fd;
+        --accent-muted: #eff6ff;
+        --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        --gradient-secondary: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        --gradient-accent: linear-gradient(135deg, #93c5fd 0%, #dbeafe 100%);
+        --border-color: #e2e8f0;
+        --border-light: #f1f5f9;
+        --shadow: 0 10px 25px rgba(37, 99, 235, 0.08);
+        --shadow-hover: 0 20px 40px rgba(37, 99, 235, 0.12);
+        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+        --spacing-3xl: 6rem;
+    }
+
+    /* Reset & Base */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--primary-bg);
+        color: var(--primary-text);
+        line-height: 1.7;
+        overflow-x: hidden;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    /* Sophisticated Background */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(147, 197, 253, 0.02) 0%, transparent 50%),
+            radial-gradient(circle at 40% 60%, rgba(219, 234, 254, 0.01) 0%, transparent 50%),
+            linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        z-index: -2;
+    }
+
+    /* Subtle Grid Texture */
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+    /* Navigation */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(250, 250, 250, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-card);
+    }
+
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-text);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+        transform: translateY(-2px);
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: var(--spacing-lg);
+    }
+
+    .nav-link {
+        color: var(--accent-text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: var(--spacing-xs) 0;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+    }
+
+    .nav-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-1px);
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-primary);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .nav-link.active {
+        color: var(--accent-color);
+    }
+
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--primary-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Page Container */
+    .page-container {
+        min-height: 100vh;
+        padding-top: 80px;
+    }
+
+    /* Section Styles */
+    .section {
+        padding: var(--spacing-3xl) var(--spacing-lg);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: var(--spacing-xl);
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-subtitle {
+        font-size: 1.2rem;
+        color: var(--secondary-text);
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Demo Interface */
+    .demo-container {
+        background: var(--card-bg);
+        border-radius: 24px;
+        padding: var(--spacing-2xl);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        margin: var(--spacing-2xl) 0;
+    }
+
+    .demo-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+        padding-bottom: var(--spacing-lg);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .demo-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .demo-icon i {
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .demo-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--accent-color);
+    }
+
+    .demo-subtitle {
+        color: var(--secondary-text);
+        font-size: 0.9rem;
+    }
+
+    .demo-interface {
+        background: var(--gradient-secondary);
+        border-radius: 16px;
+        padding: var(--spacing-xl);
+        border: 2px solid var(--accent-light);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .demo-screen {
+        background: white;
+        border-radius: 12px;
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-card);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .demo-message {
+        background: var(--accent-muted);
+        border-radius: 12px;
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+        border-left: 4px solid var(--accent-color);
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: var(--accent-text);
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    .demo-input {
+        background: white;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        padding: var(--spacing-sm) var(--spacing-md);
+        width: 100%;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .demo-input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px var(--accent-muted);
+    }
+
+    .demo-button {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: var(--spacing-sm);
+    }
+
+    .demo-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .demo-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-2xl);
+    }
+
+    .feature-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: var(--spacing-lg);
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-card);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color);
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto var(--spacing-md);
+    }
+
+    .feature-icon i {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+    }
+
+    .feature-card h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent-color);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .feature-card p {
+        color: var(--secondary-text);
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+    }
+
+    .typing-indicator {
+        display: inline-block;
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* Footer */
+    .footer {
+        background: var(--secondary-bg);
+        border-top: 1px solid var(--border-color);
+        padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+        text-align: center;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .footer p {
+        color: var(--secondary-text);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+    }
+
+    .social-link {
+        color: var(--secondary-text);
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--secondary-bg);
+            flex-direction: column;
+            padding: var(--spacing-lg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu-toggle {
+            display: block;
+        }
+
+        .section {
+            padding: var(--spacing-2xl) var(--spacing-sm);
+        }
+
+        .demo-features {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+    }
+</style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="cleer.html" class="logo">
+        <i class="fas fa-eye" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+        Cleer
+      </a>
+      <ul class="nav-menu">
+        <li><a href="cleer.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="roadmap.html" class="nav-link">Roadmap</a></li>
+        <li><a href="team.html" class="nav-link">Join Team</a></li>
+        <li><a href="demo.html" class="nav-link active">Demo</a></li>
+      </ul>
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Container -->
+  <div class="page-container">
+    <!-- Demo Section -->
+    <section class="section">
+      <h2 class="section-title">See Cleer in Action</h2>
+      <p class="section-subtitle">Experience the power of visual AI assistance</p>
+      
+      <div class="demo-container">
+        <div class="demo-header">
+          <div class="demo-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div>
+            <div class="demo-title">Cleer AI Assistant</div>
+            <div class="demo-subtitle">Visual Intelligence Demo</div>
+          </div>
+        </div>
+        
+        <div class="demo-interface">
+          <div class="demo-screen">
+            <h3 style="color: var(--accent-color); margin-bottom: var(--spacing-md);">Interactive Demo</h3>
+            <p style="color: var(--secondary-text); margin-bottom: var(--spacing-lg);">Try asking Cleer to help with a task. Cleer can see your screen and understand context automatically.</p>
+            
+            <div class="demo-message" id="demo-message">
+              "I can see you're working on a presentation. Would you like me to help format the slides?"
+            </div>
+            
+            <input type="text" class="demo-input" placeholder="Ask Cleer anything..." id="demo-input">
+            <button class="demo-button" onclick="simulateResponse()">Send Message</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-features">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>Visual Understanding</h3>
+          <p>Cleer processes visual information in real-time, understanding context from your screen, documents, and applications.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Contextual Intelligence</h3>
+          <p>Understands your workflow and provides assistance with minimal input, learning your patterns and preferences.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h3>Intelligent Automation</h3>
+          <p>Automatically identifies opportunities to assist, from formatting documents to organizing data seamlessly.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Privacy First</h3>
+          <p>All processing happens locally with enterprise-grade security, ensuring your data never leaves your device.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Cleer by Solnetex. All rights reserved.</p>
+      <p>Building the future of AI assistance, one innovation at a time.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="mailto:info@cleer.ai" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-menu').classList.toggle('active');
+    });
+
+    // Add scroll effect to navbar
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(250, 250, 250, 0.98)';
+      } else {
+        navbar.style.background = 'rgba(250, 250, 250, 0.95)';
+      }
+    });
+
+    // Demo functionality
+    const responses = [
+      "I can see you're working on a presentation. Would you like me to help format the slides?",
+      "I notice you're writing an email. I can help you improve the tone and structure.",
+      "I can see you're browsing documentation. Would you like me to summarize the key points?",
+      "I notice you're working on code. I can help you optimize this function for better performance.",
+      "I can see you're organizing files. I can help you create a better folder structure.",
+      "I notice you're researching a topic. I can help you find more relevant information."
+    ];
+
+    function simulateResponse() {
+      const input = document.getElementById('demo-input');
+      const message = document.getElementById('demo-message');
+      
+      if (input.value.trim()) {
+        // Show typing indicator
+        message.innerHTML = '<span class="typing-indicator">Cleer is thinking...</span>';
+        
+        // Simulate processing time
+        setTimeout(() => {
+          const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+          message.innerHTML = `"${randomResponse}"`;
+          message.style.animation = 'fadeInUp 0.5s ease-out';
+        }, 1500);
+        
+        input.value = '';
+      }
+    }
+
+    // Allow Enter key to send message
+    document.getElementById('demo-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        simulateResponse();
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.feature-card').forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      
+      // Stagger animations
+      el.style.transitionDelay = `${index * 0.1}s`;
+      
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
