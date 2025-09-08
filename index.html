@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solnetex | AI Innovation</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+
+    header {
+      background: #111;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #222;
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #00ffff;
+    }
+
+    nav a {
+      margin-left: 25px;
+      font-weight: 500;
+    }
+
+    section {
+      padding: 80px 50px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #00ffff;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      max-width: 700px;
+    }
+
+    .hero button {
+      padding: 15px 30px;
+      background: #00ffff;
+      border: none;
+      color: #0d0d0d;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .hero button:hover {
+      background: #00cccc;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .feature {
+      background: #111;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #222;
+      transition: 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px);
+      border-color: #00ffff;
+    }
+
+    .feature h3 {
+      margin-bottom: 15px;
+      color: #00ffff;
+    }
+
+    footer {
+      background: #111;
+      padding: 30px 50px;
+      text-align: center;
+      border-top: 1px solid #222;
+      margin-top: 50px;
+    }
+
+    footer p {
+      color: #888;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .hero h2 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Solnetex</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="about">
+    <h2>Cleer — The Second You</h2>
+    <p>Cleer is an advanced AI assistant developed under Solnetex, designed to revolutionize everyday tasks online. Unlike traditional AI, Cleer sees everything you see and acts with minimal input, solving problems instantly and intelligently.</p>
+    <button onclick="alert('Welcome to Solnetex!');">Learn More</button>
+  </section>
+
+  <section class="features" id="features">
+    <div class="feature">
+      <h3>Intelligent Assistance</h3>
+      <p>Cleer understands context and provides answers or completes tasks automatically, just like a second you.</p>
+    </div>
+    <div class="feature">
+      <h3>Pattern-Based Learning</h3>
+      <p>Our AI learns through observation and pattern recognition, mimicking the way humans and nature learn.</p>
+    </div>
+    <div class="feature">
+      <h3>Secure & Private</h3>
+      <p>Cleer operates locally, ensuring your data is private and actions are secure without cloud dependency.</p>
+    </div>
+    <div class="feature">
+      <h3>Cutting-Edge AI</h3>
+      <p>Solnetex is focused on AI-driven innovation, creating tools that anticipate and simplify your digital life.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 style="color:#00ffff;text-align:center;">Contact Us</h2>
+    <p style="text-align:center;">Email: <a href="mailto:info@solnetex.com">info@solnetex.com</a></p>
+    <p style="text-align:center;">Twitter: <a href="https://twitter.com/solnetex" target="_blank">@Solnetex</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Solnetex. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
