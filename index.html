@@ -3,192 +3,1747 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solnetex | AI Innovation</title>
+  <title>Solnetex | AI Innovation Leader</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    /* Reset */
+    /* CSS Variables */
+    :root {
+      --primary-bg: #0f0f0f;
+      --secondary-bg: #1a1a1a;
+      --accent-bg: #252525;
+      --primary-text: #ffffff;
+      --secondary-text: #b0b0b0;
+      --accent-color: #6366f1;
+      --accent-hover: #4f46e5;
+      --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      --gradient-secondary: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      --border-color: #333333;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      --shadow-hover: 0 30px 60px rgba(99, 102, 241, 0.15);
+      --aurora-1: #6366f1;
+      --aurora-2: #8b5cf6;
+      --aurora-3: #06b6d4;
+      --aurora-4: #10b981;
+    }
+
+    /* Reset & Base */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background-color: #0d0d0d;
-      color: #f0f0f0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--primary-bg);
+      color: var(--primary-text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    a {
-      color: #00ffff;
-      text-decoration: none;
+    /* Noise Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(6, 182, 212, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      z-index: -2;
     }
 
-    header {
-      background: #111;
-      padding: 20px 50px;
+    /* Noise Texture */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+      background-size: 20px 20px;
+      z-index: -1;
+      opacity: 0.1;
+      animation: noise 0.2s infinite;
+    }
+
+    @keyframes noise {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-1px, -1px); }
+      20% { transform: translate(1px, -1px); }
+      30% { transform: translate(-1px, 1px); }
+      40% { transform: translate(1px, 1px); }
+      50% { transform: translate(-1px, -1px); }
+      60% { transform: translate(1px, -1px); }
+      70% { transform: translate(-1px, 1px); }
+      80% { transform: translate(1px, 1px); }
+      90% { transform: translate(-1px, -1px); }
+    }
+
+    /* Aurora Effects */
+    .aurora {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.3;
+      z-index: -1;
+      animation: auroraFloat 20s ease-in-out infinite;
+    }
+
+    .aurora-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--aurora-1);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .aurora-2 {
+      width: 200px;
+      height: 200px;
+      background: var(--aurora-2);
+      top: 60%;
+      right: 15%;
+      animation-delay: 5s;
+    }
+
+    .aurora-3 {
+      width: 250px;
+      height: 250px;
+      background: var(--aurora-3);
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 10s;
+    }
+
+    .aurora-4 {
+      width: 180px;
+      height: 180px;
+      background: var(--aurora-4);
+      top: 30%;
+      right: 40%;
+      animation-delay: 15s;
+    }
+
+    @keyframes auroraFloat {
+      0%, 100% { 
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.3;
+      }
+      25% { 
+        transform: translate(20px, -30px) rotate(90deg) scale(1.1);
+        opacity: 0.5;
+      }
+      50% { 
+        transform: translate(-15px, 20px) rotate(180deg) scale(0.9);
+        opacity: 0.4;
+      }
+      75% { 
+        transform: translate(30px, 10px) rotate(270deg) scale(1.05);
+        opacity: 0.6;
+      }
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #222;
     }
 
-    header h1 {
-      font-size: 28px;
-      color: #00ffff;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-text);
+      text-decoration: none;
+      transition: all 0.3s ease;
     }
 
-    nav a {
-      margin-left: 25px;
+    .logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo:hover img {
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--secondary-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--primary-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Page Container */
+    .page-container {
+      min-height: 100vh;
+      padding-top: 80px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      padding: 0 2rem;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--secondary-text);
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero-description {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--secondary-text);
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: var(--primary-bg);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent-color);
+      border: 2px solid var(--accent-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-color);
+      color: var(--primary-bg);
+      transform: translateY(-3px);
+    }
+
+    /* Floating Elements with Different Animations */
+    .floating-element {
+      position: absolute;
+      opacity: 0.1;
+    }
+
+    .float-1 {
+      animation: floatGentle 8s ease-in-out infinite;
+      top: 20%;
+      left: 10%;
+    }
+
+    .float-2 {
+      animation: floatTilt 6s ease-in-out infinite;
+      top: 60%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .float-3 {
+      animation: floatBounce 7s ease-in-out infinite;
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    .float-4 {
+      animation: floatSway 9s ease-in-out infinite;
+      top: 40%;
+      right: 30%;
+      animation-delay: 1s;
+    }
+
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      50% { transform: translateY(-30px) rotate(5deg) scale(1.05); }
+    }
+
+    @keyframes floatTilt {
+      0%, 100% { transform: translateY(0px) rotate(0deg) translateX(0px); }
+      25% { transform: translateY(-20px) rotate(10deg) translateX(10px); }
+      50% { transform: translateY(-40px) rotate(-5deg) translateX(-5px); }
+      75% { transform: translateY(-20px) rotate(15deg) translateX(15px); }
+    }
+
+    @keyframes floatBounce {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      25% { transform: translateY(-25px) rotate(8deg) scale(1.1); }
+      50% { transform: translateY(-50px) rotate(-3deg) scale(0.95); }
+      75% { transform: translateY(-25px) rotate(12deg) scale(1.08); }
+    }
+
+    @keyframes floatSway {
+      0%, 100% { transform: translateY(0px) rotate(0deg) translateX(0px); }
+      33% { transform: translateY(-35px) rotate(12deg) translateX(20px); }
+      66% { transform: translateY(-20px) rotate(-8deg) translateX(-15px); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes rotateIn {
+      from {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--secondary-text);
+      text-align: center;
+      margin-bottom: 4rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Varied Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .bento-card {
+      background: var(--gradient-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .bento-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--accent-color);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .bento-card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .bento-card h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+    }
+
+    .bento-card p {
+      color: var(--secondary-text);
+      line-height: 1.6;
+    }
+
+    /* Bento Card Sizes */
+    .bento-large {
+      grid-column: span 8;
+      grid-row: span 2;
+    }
+
+    .bento-medium {
+      grid-column: span 6;
+      grid-row: span 1;
+    }
+
+    .bento-small {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    .bento-wide {
+      grid-column: span 12;
+      grid-row: span 1;
+    }
+
+    .bento-tall {
+      grid-column: span 4;
+      grid-row: span 2;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--secondary-bg);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer p {
+      color: var(--secondary-text);
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      color: var(--secondary-text);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--secondary-bg);
+        flex-direction: column;
+        padding: 2rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        padding: 2rem 1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+
+      .section {
+        padding: 4rem 1rem;
+      }
+
+      .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .bento-large,
+      .bento-medium,
+      .bento-small,
+      .bento-wide,
+      .bento-tall {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+
+    /* Page Transitions */
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--primary-text);
       font-weight: 500;
     }
 
-    section {
-      padding: 80px 50px;
-      max-width: 1200px;
-      margin: auto;
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      background: var(--accent-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--primary-text);
+      font-size: 1rem;
+      transition: all 0.3s ease;
     }
 
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
     }
 
-    .hero h2 {
-      font-size: 48px;
-      margin-bottom: 20px;
-      color: #00ffff;
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
     }
 
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 40px;
-      max-width: 700px;
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .hero button {
-      padding: 15px 30px;
-      background: #00ffff;
-      border: none;
-      color: #0d0d0d;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: 0.3s;
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gradient-primary);
+      transform: translateX(-50%);
     }
 
-    .hero button:hover {
-      background: #00cccc;
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      width: 50%;
     }
 
-    .features {
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      padding-right: 3rem;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      padding-left: 3rem;
+    }
+
+    .timeline-content {
+      background: var(--gradient-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 15px;
+      padding: 2rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before {
+      right: -20px;
+      border-left-color: var(--border-color);
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before {
+      left: -20px;
+      border-right-color: var(--border-color);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 2rem;
+      width: 20px;
+      height: 20px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    /* Job Cards */
+    .job-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
 
-    .feature {
-      background: #111;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      border: 1px solid #222;
-      transition: 0.3s;
+    .job-card {
+      background: var(--gradient-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: all 0.3s ease;
     }
 
-    .feature:hover {
-      transform: translateY(-10px);
-      border-color: #00ffff;
+    .job-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+      box-shadow: var(--shadow-hover);
     }
 
-    .feature h3 {
-      margin-bottom: 15px;
-      color: #00ffff;
+    .job-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
     }
 
-    footer {
-      background: #111;
-      padding: 30px 50px;
-      text-align: center;
-      border-top: 1px solid #222;
-      margin-top: 50px;
+    .job-department {
+      color: var(--secondary-text);
+      margin-bottom: 1rem;
     }
 
-    footer p {
-      color: #888;
+    .job-description {
+      color: var(--secondary-text);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
     }
 
-    /* Responsive */
-    @media(max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
+    .job-requirements {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
 
-      .hero h2 {
-        font-size: 36px;
-      }
+    .job-requirements li {
+      color: var(--secondary-text);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
 
-      .hero p {
-        font-size: 18px;
-      }
+    .job-requirements li::before {
+      content: '•';
+      color: var(--accent-color);
+      position: absolute;
+      left: 0;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Solnetex</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#features">Features</a>
-      <a href="#contact">Contact</a>
+  <!-- Aurora Effects -->
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+  <div class="aurora aurora-3"></div>
+  <div class="aurora aurora-4"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo" onclick="showPage('home')">
+        <img src="example.png" alt="Solnetex Logo">
+        Solnetex
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#" class="nav-link" onclick="showPage('home')">Home</a></li>
+        <li><a href="#" class="nav-link" onclick="showPage('about')">About Us</a></li>
+        <li><a href="#" class="nav-link" onclick="showPage('projects')">Our Projects</a></li>
+        <li><a href="#" class="nav-link" onclick="showPage('roadmap')">Roadmap</a></li>
+        <li><a href="#" class="nav-link" onclick="showPage('join')">Join Us</a></li>
+        <li><a href="#" class="nav-link" onclick="showPage('investors')">Investors</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
     </nav>
-  </header>
 
-  <section class="hero" id="about">
-    <h2>Cleer — The Second You</h2>
-    <p>Cleer is an advanced AI assistant developed under Solnetex, designed to revolutionize everyday tasks online. Unlike traditional AI, Cleer sees everything you see and acts with minimal input, solving problems instantly and intelligently.</p>
-    <button onclick="alert('Welcome to Solnetex!');">Learn More</button>
+  <!-- Page Container -->
+  <div class="page-container">
+    <!-- Home Page -->
+    <div id="home" class="page active">
+      <section class="hero">
+        <div class="floating-element float-1">
+          <i class="fas fa-brain" style="font-size: 4rem; color: var(--accent-color);"></i>
+        </div>
+        <div class="floating-element float-2">
+          <i class="fas fa-robot" style="font-size: 3rem; color: var(--accent-color);"></i>
+        </div>
+        <div class="floating-element float-3">
+          <i class="fas fa-microchip" style="font-size: 3.5rem; color: var(--accent-color);"></i>
+        </div>
+        <div class="floating-element float-4">
+          <i class="fas fa-cog" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+        </div>
+        
+        <div class="hero-content">
+          <h1 class="hero-title">Solnetex</h1>
+          <p class="hero-subtitle">Pioneering the Future of AI Innovation</p>
+          <p class="hero-description">
+            Solnetex is a cutting-edge AI development company at the forefront of artificial intelligence innovation. 
+            We're not just building AI tools—we're creating the next generation of intelligent assistants that understand, 
+            adapt, and enhance human capabilities in ways never before possible. Our mission is to develop AI technologies 
+            that seamlessly integrate into daily life, making complex tasks simple and enabling humans to focus on what matters most.
+          </p>
+          <div class="cta-buttons">
+            <a href="#" class="btn btn-primary" onclick="showPage('about')">
+              <i class="fas fa-info-circle"></i>
+              Learn About Us
+            </a>
+            <a href="#" class="btn btn-secondary" onclick="showPage('projects')">
+              <i class="fas fa-project-diagram"></i>
+              Our Projects
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- What We Do Section -->
+      <section class="section">
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-subtitle">Building the future of AI, one innovation at a time</p>
+        
+        <div class="bento-grid">
+          <div class="bento-card bento-large">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-lightbulb"></i> AI Innovation</h3>
+              <p>We develop cutting-edge AI technologies that push the boundaries of what's possible. Our research and development team works tirelessly to create AI systems that are not just intelligent, but truly understanding and adaptive to human needs.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-users"></i> Human-Centric Design</h3>
+              <p>Every AI system we build is designed with humans at the center. We believe AI should augment human intelligence, not replace it.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-shield-alt"></i> Privacy & Security</h3>
+              <p>Privacy and security are fundamental to everything we do. We build AI systems that protect user data while delivering powerful capabilities.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-small">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-rocket"></i> Scalable Solutions</h3>
+              <p>Our AI technologies are built to scale from individual users to enterprise applications.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-small">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-chart-line"></i> Continuous Learning</h3>
+              <p>Our AI systems continuously learn and adapt to provide better experiences over time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Approach Section -->
+      <section class="section">
+        <h2 class="section-title">Our Approach</h2>
+        <p class="section-subtitle">How we're revolutionizing AI development</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+          <div style="text-align: center; padding: 2rem; background: var(--gradient-secondary); border-radius: 16px; border: 1px solid var(--border-color);">
+            <div style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; animation: bounceIn 1s ease-out;">
+              <i class="fas fa-search" style="font-size: 2rem; color: white;"></i>
+            </div>
+            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Research First</h3>
+            <p style="color: var(--secondary-text);">We invest heavily in research to understand the fundamental challenges of AI and develop breakthrough solutions.</p>
+          </div>
+          
+          <div style="text-align: center; padding: 2rem; background: var(--gradient-secondary); border-radius: 16px; border: 1px solid var(--border-color);">
+            <div style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; animation: bounceIn 1s ease-out 0.2s both;">
+              <i class="fas fa-cogs" style="font-size: 2rem; color: white;"></i>
+            </div>
+            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Iterative Development</h3>
+            <p style="color: var(--secondary-text);">We build, test, and refine our AI systems through continuous iteration and user feedback.</p>
+          </div>
+          
+          <div style="text-align: center; padding: 2rem; background: var(--gradient-secondary); border-radius: 16px; border: 1px solid var(--border-color);">
+            <div style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; animation: bounceIn 1s ease-out 0.4s both;">
+              <i class="fas fa-globe" style="font-size: 2rem; color: white;"></i>
+            </div>
+            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Global Impact</h3>
+            <p style="color: var(--secondary-text);">We're building AI solutions that can positively impact people's lives around the world.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Our Projects Page -->
+    <div id="projects" class="page">
+      <section class="section">
+        <h2 class="section-title">Our Projects</h2>
+        <p class="section-subtitle">Innovative AI solutions that are changing the world</p>
+        
+        <div class="bento-grid">
+          <div class="bento-card bento-large" onclick="showPage('cleer')" style="cursor: pointer;">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-robot"></i> Cleer — The Second You</h3>
+              <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--accent-color);">Our Flagship AI Assistant</p>
+              <p>Cleer is our revolutionary AI assistant that sees what you see, understands context with minimal input, types in your own style, learns your habits and personality traits, and assists with everyday online tasks seamlessly. Experience the future of AI-powered productivity.</p>
+              <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <span style="background: var(--accent-color); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Visual Understanding</span>
+                <span style="background: var(--accent-color); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Contextual Intelligence</span>
+                <span style="background: var(--accent-color); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Personal Learning</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-eye"></i> Project Vision</h3>
+              <p style="color: var(--secondary-text); font-size: 0.9rem; margin-bottom: 1rem;">Coming Soon</p>
+              <p>Next-generation computer vision AI that can understand and interact with the physical world through advanced image and video processing.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-brain"></i> Project Mind</h3>
+              <p style="color: var(--secondary-text); font-size: 0.9rem; margin-bottom: 1rem;">In Development</p>
+              <p>An AI system that can understand and predict human thought patterns, enabling unprecedented levels of personalization and assistance.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-small">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-link"></i> Project Nexus</h3>
+              <p style="color: var(--secondary-text); font-size: 0.9rem; margin-bottom: 1rem;">Planning</p>
+              <p>Connecting multiple AI assistants for seamless collaboration.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-small">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-infinity"></i> Project Unity</h3>
+              <p style="color: var(--secondary-text); font-size: 0.9rem; margin-bottom: 1rem;">Future Vision</p>
+              <p>The ultimate AI ecosystem integration platform.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Cleer Project Page -->
+    <div id="cleer" class="page">
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Cleer — The Second You</h1>
+          <p class="hero-subtitle">Revolutionary AI Assistant</p>
+          <p class="hero-description">
+            Cleer is Solnetex's flagship AI assistant that represents the future of human-AI collaboration. 
+            Unlike traditional AI tools, Cleer sees what you see, understands context with minimal input, 
+            types in your own style, learns your habits and personality traits, and assists with everyday 
+            online tasks seamlessly. Experience AI that truly understands and adapts to you.
+          </p>
+          <div class="cta-buttons">
+            <a href="#" class="btn btn-primary" onclick="showPage('join')">
+              <i class="fas fa-users"></i>
+              Join Our Team
+            </a>
+            <a href="#" class="btn btn-secondary" onclick="showPage('investors')">
+              <i class="fas fa-handshake"></i>
+              Partner With Us
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cleer Capabilities Section -->
+      <section class="section">
+        <h2 class="section-title">Core Capabilities</h2>
+        <p class="section-subtitle">Experience AI that truly understands and adapts to you</p>
+        
+        <div class="bento-grid">
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-eye"></i> Visual Understanding</h3>
+              <p>Cleer sees everything you see on your screen, understanding context and visual cues to provide intelligent assistance without you having to explain what you're looking at.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-brain"></i> Contextual Intelligence</h3>
+              <p>With minimal input, Cleer understands your intent and context, making decisions and taking actions that feel natural and intuitive to your workflow.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-keyboard"></i> Personal Writing Style</h3>
+              <p>Cleer learns and mimics your unique writing style, tone, and communication patterns, ensuring every interaction feels authentically you.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-chart-line"></i> Habit Learning</h3>
+              <p>Our AI continuously learns from your habits, preferences, and personality traits, becoming more helpful and personalized with every interaction.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-tasks"></i> Seamless Task Automation</h3>
+              <p>From simple tasks to complex workflows, Cleer handles everyday online activities seamlessly, saving you time and mental energy.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card bento-medium">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-shield-alt"></i> Privacy First</h3>
+              <p>Built with privacy at its core, Cleer operates locally when possible, ensuring your data stays secure and under your control.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technology Section -->
+      <section class="section">
+        <h2 class="section-title">Technology Behind Cleer</h2>
+        <p class="section-subtitle">Advanced AI technologies powering the future</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+          <div style="text-align: center; padding: 2rem; background: var(--gradient-secondary); border-radius: 16px; border: 1px solid var(--border-color);">
+            <div style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; animation: rotateIn 1s ease-out;">
+              <i class="fas fa-eye" style="font-size: 2rem; color: white;"></i>
+            </div>
+            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Computer Vision</h3>
+            <p style="color: var(--secondary-text);">Advanced visual processing algorithms that understand screen content and context in real-time.</p>
+          </div>
+          
+          <div style="text-align: center; padding: 2rem; background: var(--gradient-secondary); border-radius: 16px; border: 1px solid var(--border-color);">
+            <div style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; animation: rotateIn 1s ease-out 0.2s both;">
+              <i class="fas fa-brain" style="font-size: 2rem; color: white;"></i>
+            </div>
+            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Natural Language Processing</h3>
+            <p style="color: var(--secondary-text);">State-of-the-art NLP models that understand intent and context from minimal input.</p>
+          </div>
+          
+          <div style="text-align: center; padding: 2rem; background: var(--gradient-secondary); border-radius: 16px; border: 1px solid var(--border-color);">
+            <div style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; animation: rotateIn 1s ease-out 0.4s both;">
+              <i class="fas fa-cogs" style="font-size: 2rem; color: white;"></i>
+            </div>
+            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Machine Learning</h3>
+            <p style="color: var(--secondary-text);">Continuous learning algorithms that adapt to your unique patterns and preferences.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- About Us Page -->
+    <div id="about" class="page">
+      <section class="section">
+        <h2 class="section-title">About Solnetex</h2>
+        <p class="section-subtitle">Pioneering the future of AI innovation</p>
+        
+        <div class="bento-grid">
+          <div class="bento-card" style="grid-column: span 2;">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-building"></i> Our Company</h3>
+              <p>Solnetex is a cutting-edge AI development company at the forefront of artificial intelligence innovation. We're not just building AI tools—we're creating the next generation of intelligent assistants that understand, adapt, and enhance human capabilities in ways never before possible.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-lightbulb"></i> Our Philosophy</h3>
+              <p>We believe AI should augment human intelligence, not replace it. Our approach focuses on creating AI that learns from human behavior, adapts to individual needs, and enhances productivity while maintaining the human touch.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-target"></i> Our Mission</h3>
+              <p>To develop AI technologies that seamlessly integrate into daily life, making complex tasks simple and enabling humans to focus on what matters most—creativity, relationships, and personal growth.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-heart"></i> Our Values</h3>
+              <p>Innovation, privacy, transparency, and human-centric design guide everything we do. We're committed to building AI that serves humanity's best interests while pushing the boundaries of what's possible.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-rocket"></i> Our Vision</h3>
+              <p>To create a world where AI and humans work together in perfect harmony, where technology amplifies human potential and makes the impossible possible.</p>
+            </div>
+          </div>
+        </div>
   </section>
+    </div>
 
-  <section class="features" id="features">
-    <div class="feature">
-      <h3>Intelligent Assistance</h3>
-      <p>Cleer understands context and provides answers or completes tasks automatically, just like a second you.</p>
+    <!-- Roadmap Page -->
+    <div id="roadmap" class="page">
+      <section class="section">
+        <h2 class="section-title">Our Roadmap</h2>
+        <p class="section-subtitle">Building the future of AI, one innovation at a time</p>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Q1 2025 - Cleer Launch</h3>
+              <p><strong>Status: Completed</strong></p>
+              <p>Our flagship AI assistant "Cleer" is now live! Experience the future of AI-powered productivity with our revolutionary visual understanding and contextual intelligence capabilities.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Q2 2025 - Cleer Pro</h3>
+              <p><strong>Status: In Development</strong></p>
+              <p>Advanced features including multi-modal understanding, enhanced learning algorithms, and enterprise-grade security for professional users.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Q3 2025 - Project Nexus</h3>
+              <p><strong>Status: Planning</strong></p>
+              <p>A revolutionary AI platform that connects multiple AI assistants, enabling seamless collaboration and knowledge sharing across different domains.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Q4 2025 - Project Vision</h3>
+              <p><strong>Status: Research Phase</strong></p>
+              <p>Next-generation computer vision AI that can understand and interact with the physical world through advanced image and video processing.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Q1 2026 - Project Mind</h3>
+              <p><strong>Status: Conceptual</strong></p>
+              <p>An AI system that can understand and predict human thought patterns, enabling unprecedented levels of personalization and assistance.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Q2 2026 - Project Unity</h3>
+              <p><strong>Status: Future Vision</strong></p>
+              <p>The ultimate AI ecosystem that seamlessly integrates all our technologies into a unified, intelligent platform for the future.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-    <div class="feature">
-      <h3>Pattern-Based Learning</h3>
-      <p>Our AI learns through observation and pattern recognition, mimicking the way humans and nature learn.</p>
+
+    <!-- Join Us Page -->
+    <div id="join" class="page">
+      <section class="section">
+        <h2 class="section-title">Join Our Team</h2>
+        <p class="section-subtitle">Be part of the AI revolution. Help us build the future.</p>
+        
+        <div class="job-grid">
+          <div class="job-card">
+            <h3 class="job-title">Senior AI Developer</h3>
+            <p class="job-department">Engineering</p>
+            <p class="job-description">Lead the development of cutting-edge AI models and algorithms that power our next-generation assistants.</p>
+            <ul class="job-requirements">
+              <li>5+ years experience in AI/ML development</li>
+              <li>Expert in Python, TensorFlow, PyTorch</li>
+              <li>PhD in Computer Science or related field</li>
+              <li>Experience with computer vision and NLP</li>
+            </ul>
+          </div>
+          
+          <div class="job-card">
+            <h3 class="job-title">Full-Stack Developer</h3>
+            <p class="job-department">Engineering</p>
+            <p class="job-description">Build and maintain the infrastructure that powers our AI applications and user interfaces.</p>
+            <ul class="job-requirements">
+              <li>3+ years full-stack development experience</li>
+              <li>Proficient in React, Node.js, Python</li>
+              <li>Experience with cloud platforms (AWS, GCP)</li>
+              <li>Knowledge of AI/ML integration</li>
+            </ul>
+          </div>
+          
+          <div class="job-card">
+            <h3 class="job-title">Chief Operating Officer</h3>
+            <p class="job-department">Executive</p>
+            <p class="job-description">Oversee company operations and drive strategic initiatives to scale our AI innovations globally.</p>
+            <ul class="job-requirements">
+              <li>10+ years executive experience</li>
+              <li>Proven track record in tech startups</li>
+              <li>Strong leadership and communication skills</li>
+              <li>Experience with AI/tech industry</li>
+            </ul>
+          </div>
+          
+          <div class="job-card">
+            <h3 class="job-title">Chief Financial Officer</h3>
+            <p class="job-department">Executive</p>
+            <p class="job-description">Manage financial strategy, fundraising, and investor relations for our growing AI company.</p>
+            <ul class="job-requirements">
+              <li>8+ years finance experience</li>
+              <li>CPA or MBA preferred</li>
+              <li>Experience with venture capital</li>
+              <li>Strong analytical and strategic thinking</li>
+            </ul>
+          </div>
+          
+          <div class="job-card">
+            <h3 class="job-title">UX/UI Designer</h3>
+            <p class="job-department">Design</p>
+            <p class="job-description">Create intuitive and beautiful user experiences for our AI-powered applications and interfaces.</p>
+            <ul class="job-requirements">
+              <li>3+ years UX/UI design experience</li>
+              <li>Proficient in Figma, Sketch, Adobe Creative Suite</li>
+              <li>Experience with AI/ML interfaces</li>
+              <li>Strong portfolio demonstrating user-centered design</li>
+            </ul>
+          </div>
+          
+          <div class="job-card">
+            <h3 class="job-title">Product Manager</h3>
+            <p class="job-department">Product</p>
+            <p class="job-description">Define product strategy and roadmap for our AI products, working closely with engineering and design teams.</p>
+            <ul class="job-requirements">
+              <li>4+ years product management experience</li>
+              <li>Experience with AI/ML products</li>
+              <li>Strong analytical and communication skills</li>
+              <li>Technical background preferred</li>
+            </ul>
+          </div>
+          
+          <div class="job-card">
+            <h3 class="job-title">Operations Lead</h3>
+            <p class="job-department">Operations</p>
+            <p class="job-description">Streamline company operations and implement processes to support our rapid growth and expansion.</p>
+            <ul class="job-requirements">
+              <li>5+ years operations experience</li>
+              <li>Experience with scaling tech companies</li>
+              <li>Strong project management skills</li>
+              <li>Process improvement expertise</li>
+            </ul>
+          </div>
+          
+          <div class="job-card">
+            <h3 class="job-title">Security Engineer</h3>
+            <p class="job-department">Security</p>
+            <p class="job-description">Ensure the security and privacy of our AI systems and user data through robust security measures.</p>
+            <ul class="job-requirements">
+              <li>4+ years cybersecurity experience</li>
+              <li>Expert in security frameworks and protocols</li>
+              <li>Experience with AI/ML security</li>
+              <li>Relevant certifications (CISSP, CISM)</li>
+            </ul>
+          </div>
+          
+          <div class="job-card">
+            <h3 class="job-title">Partnerships Manager</h3>
+            <p class="job-department">Business Development</p>
+            <p class="job-description">Build strategic partnerships with key industry players to accelerate our AI technology adoption.</p>
+            <ul class="job-requirements">
+              <li>3+ years partnership/business development experience</li>
+              <li>Strong network in tech/AI industry</li>
+              <li>Excellent negotiation and communication skills</li>
+              <li>Experience with B2B partnerships</li>
+            </ul>
+          </div>
+          
+          <div class="job-card">
+            <h3 class="job-title">Marketing Specialist</h3>
+            <p class="job-department">Marketing</p>
+            <p class="job-description">Develop and execute marketing strategies to promote our AI products and build brand awareness.</p>
+            <ul class="job-requirements">
+              <li>3+ years marketing experience</li>
+              <li>Experience with tech/AI marketing</li>
+              <li>Proficient in digital marketing tools</li>
+              <li>Creative and analytical mindset</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Application Form -->
+        <div class="section" style="margin-top: 4rem;">
+          <h3 class="section-title" style="font-size: 2rem;">Apply Now</h3>
+          <p class="section-subtitle">Ready to join the AI revolution? Send us your application.</p>
+          
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width: 600px; margin: 0 auto;">
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" id="name" name="name" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" name="email" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="position" class="form-label">Position of Interest</label>
+              <select id="position" name="position" class="form-input" required>
+                <option value="">Select a position</option>
+                <option value="senior-ai-developer">Senior AI Developer</option>
+                <option value="full-stack-developer">Full-Stack Developer</option>
+                <option value="coo">Chief Operating Officer</option>
+                <option value="cfo">Chief Financial Officer</option>
+                <option value="ux-ui-designer">UX/UI Designer</option>
+                <option value="product-manager">Product Manager</option>
+                <option value="operations-lead">Operations Lead</option>
+                <option value="security-engineer">Security Engineer</option>
+                <option value="partnerships-manager">Partnerships Manager</option>
+                <option value="marketing-specialist">Marketing Specialist</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="experience" class="form-label">Years of Experience</label>
+              <input type="number" id="experience" name="experience" class="form-input" min="0" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="resume" class="form-label">Resume/CV (URL or LinkedIn)</label>
+              <input type="url" id="resume" name="resume" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="cover-letter" class="form-label">Cover Letter</label>
+              <textarea id="cover-letter" name="cover-letter" class="form-textarea" placeholder="Tell us why you want to join Solnetex and what you can bring to our team..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              <i class="fas fa-paper-plane"></i>
+              Submit Application
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
-    <div class="feature">
-      <h3>Secure & Private</h3>
-      <p>Cleer operates locally, ensuring your data is private and actions are secure without cloud dependency.</p>
-    </div>
-    <div class="feature">
-      <h3>Cutting-Edge AI</h3>
-      <p>Solnetex is focused on AI-driven innovation, creating tools that anticipate and simplify your digital life.</p>
-    </div>
+
+    <!-- Investors Page -->
+    <div id="investors" class="page">
+      <section class="section">
+        <h2 class="section-title">Investors</h2>
+        <p class="section-subtitle">Partner with us in building the future of AI</p>
+        
+        <div class="bento-grid">
+          <div class="bento-card" style="grid-column: span 2;">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-building"></i> Our Business Model</h3>
+              <p>Solnetex operates as a parent AI company where each AI project becomes its own sub-company. This innovative structure allows us to:</p>
+              <ul style="margin-top: 1rem; color: var(--secondary-text);">
+                <li>• Focus dedicated resources on each AI product</li>
+                <li>• Attract specialized talent and expertise</li>
+                <li>• Scale individual products independently</li>
+                <li>• Create multiple revenue streams</li>
+                <li>• Minimize risk through diversification</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bento-card">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-rocket"></i> Cleer - Our First Release</h3>
+              <p>Cleer represents our flagship AI assistant, demonstrating our core capabilities in visual understanding, contextual intelligence, and personalized assistance. This product validates our technology and market approach.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-chart-line"></i> Future AI Projects</h3>
+              <p>Our roadmap includes multiple AI projects, each targeting specific market segments and use cases. From enterprise solutions to consumer applications, we're building a comprehensive AI ecosystem.</p>
+            </div>
+          </div>
+          
+          <div class="bento-card">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-dollar-sign"></i> Investment Opportunities</h3>
+              <p>We're seeking strategic investors who share our vision of human-centric AI. Investment opportunities include:</p>
+              <ul style="margin-top: 1rem; color: var(--secondary-text);">
+                <li>• Series A funding for Cleer expansion</li>
+                <li>• Project-specific investments</li>
+                <li>• Strategic partnerships</li>
+                <li>• Technology licensing deals</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bento-card">
+            <div class="bento-card-content">
+              <h3><i class="fas fa-handshake"></i> Why Partner With Us</h3>
+              <p>Solnetex offers unique advantages for investors:</p>
+              <ul style="margin-top: 1rem; color: var(--secondary-text);">
+                <li>• Proven technology with Cleer</li>
+                <li>• Diversified AI portfolio approach</li>
+                <li>• Experienced leadership team</li>
+                <li>• Clear path to profitability</li>
+                <li>• Massive market opportunity</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="section" style="margin-top: 4rem;">
+          <h3 class="section-title" style="font-size: 2rem;">Get In Touch</h3>
+          <p class="section-subtitle">Interested in investing or partnering with us? Let's discuss the opportunities.</p>
+          
+          <form action="https://formspree.io/f/YOUR_INVESTOR_FORM_ID" method="POST" style="max-width: 600px; margin: 0 auto;">
+            <div class="form-group">
+              <label for="investor-name" class="form-label">Full Name</label>
+              <input type="text" id="investor-name" name="name" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="investor-email" class="form-label">Email Address</label>
+              <input type="email" id="investor-email" name="email" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="company" class="form-label">Company/Organization</label>
+              <input type="text" id="company" name="company" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="investment-type" class="form-label">Type of Interest</label>
+              <select id="investment-type" name="investment-type" class="form-input" required>
+                <option value="">Select interest type</option>
+                <option value="series-a">Series A Investment</option>
+                <option value="project-specific">Project-Specific Investment</option>
+                <option value="strategic-partnership">Strategic Partnership</option>
+                <option value="technology-licensing">Technology Licensing</option>
+                <option value="advisory">Advisory Role</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="investment-amount" class="form-label">Investment Range (USD)</label>
+              <select id="investment-amount" name="investment-amount" class="form-input" required>
+                <option value="">Select range</option>
+                <option value="100k-500k">$100K - $500K</option>
+                <option value="500k-1m">$500K - $1M</option>
+                <option value="1m-5m">$1M - $5M</option>
+                <option value="5m-10m">$5M - $10M</option>
+                <option value="10m+">$10M+</option>
+                <option value="discuss">Let's Discuss</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your investment thesis and how you'd like to partner with Solnetex..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
   </section>
+    </div>
+  </div>
 
-  <section id="contact">
-    <h2 style="color:#00ffff;text-align:center;">Contact Us</h2>
-    <p style="text-align:center;">Email: <a href="mailto:info@solnetex.com">info@solnetex.com</a></p>
-    <p style="text-align:center;">Twitter: <a href="https://twitter.com/solnetex" target="_blank">@Solnetex</a></p>
-  </section>
-
-  <footer>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
     <p>&copy; 2025 Solnetex. All rights reserved.</p>
+      <p>Building the future of AI, one innovation at a time.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="mailto:info@solnetex.com" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    // Smooth scroll for nav links
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', e => {
+    // Page Navigation
+    function showPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // Show selected page
+      document.getElementById(pageId).classList.add('active');
+      
+      // Close mobile menu if open
+      document.querySelector('.nav-menu').classList.remove('active');
+      
+      // Update active nav link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      document.querySelector('.nav-menu').classList.toggle('active');
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll effect to navbar
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+      } else {
+        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+      }
+    });
+
+    // Add intersection observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with different animations
+    document.querySelectorAll('.bento-card, .timeline-item, .job-card').forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      
+      // Assign different animations based on index
+      const animations = ['fadeInUp', 'slideInLeft', 'slideInRight', 'scaleIn', 'rotateIn', 'bounceIn'];
+      const animationClass = animations[index % animations.length];
+      
+      el.setAttribute('data-animation', animationClass);
+      
+      observer.observe(el);
+    });
+
+    // Update observer to handle different animations
+    const updatedObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const animation = entry.target.getAttribute('data-animation');
+          entry.target.style.opacity = '1';
+          
+          switch(animation) {
+            case 'fadeInUp':
+              entry.target.style.transform = 'translateY(0)';
+              break;
+            case 'slideInLeft':
+              entry.target.style.transform = 'translateX(0)';
+              break;
+            case 'slideInRight':
+              entry.target.style.transform = 'translateX(0)';
+              break;
+            case 'scaleIn':
+              entry.target.style.transform = 'scale(1)';
+              break;
+            case 'rotateIn':
+              entry.target.style.transform = 'rotate(0deg) scale(1)';
+              break;
+            case 'bounceIn':
+              entry.target.style.transform = 'scale(1)';
+              break;
+            default:
+              entry.target.style.transform = 'translateY(0)';
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Re-observe elements with updated observer
+    document.querySelectorAll('.bento-card, .timeline-item, .job-card').forEach(el => {
+      updatedObserver.observe(el);
+    });
+
+    // Form handling
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        // Simulate form submission (replace with actual Formspree handling)
+        setTimeout(() => {
+          alert('Thank you for your submission! We\'ll get back to you soon.');
+          form.reset();
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }, 2000);
       });
     });
   </script>
